@@ -50,7 +50,6 @@
           Button bSqrt=new Button("Sqrt");
 
 
-
           buttonStyle(b7);buttonStyle(b8); buttonStyle(b9); buttonStyle(bDiv);buttonStyle(bClear);
           buttonStyle(b4);buttonStyle(b5); buttonStyle(b6); buttonStyle(bMult); buttonStyle(bRp);buttonStyle(bLb);
           buttonStyle(b1);buttonStyle(b2);buttonStyle(b3);buttonStyle(bMinus);buttonStyle(bPow);buttonStyle(bClearall);
