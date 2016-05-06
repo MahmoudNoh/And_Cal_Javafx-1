@@ -1,4 +1,6 @@
- import javafx.application.Application;
+ import com.sun.javafx.css.converters.FontConverter;
+
+import javafx.application.Application;
  import javafx.geometry.Insets;
  import javafx.geometry.Pos;
  import javafx.scene.Scene;
@@ -7,7 +9,8 @@
  import javafx.scene.image.ImageView;
  import javafx.scene.layout.GridPane;
  import javafx.scene.layout.VBox;
- import javafx.scene.text.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
  import javafx.scene.text.FontPosture;
  import javafx.scene.text.FontWeight;
  import javafx.stage.Stage;
@@ -50,10 +53,10 @@
           Button bSqrt=new Button("Sqrt");
 
 
-          buttonStyle(b7);buttonStyle(b8); buttonStyle(b9); buttonStyle(bDiv);buttonStyle(bClear);
-          buttonStyle(b4);buttonStyle(b5); buttonStyle(b6); buttonStyle(bMult); buttonStyle(bRp);buttonStyle(bLb);
-          buttonStyle(b1);buttonStyle(b2);buttonStyle(b3);buttonStyle(bMinus);buttonStyle(bPow);buttonStyle(bClearall);
-          buttonStyle(bSqrt); buttonStyle(b0); buttonStyle(bDot);buttonStyle(bMod2);buttonStyle(bMod); buttonStyle(bPlus);
+          buttonStyle(b7);buttonStyle(b8); buttonStyle(b9); buttonStyleOpr(bDiv);buttonStyleOpr(bClear);
+          buttonStyle(b4);buttonStyle(b5); buttonStyle(b6); buttonStyleOpr(bMult); buttonStyleOpr(bRp);buttonStyleOpr(bLb);
+          buttonStyle(b1);buttonStyle(b2);buttonStyle(b3);buttonStyleOpr(bMinus);buttonStyleOpr(bPow);buttonStyleOpr(bClearall);
+          buttonStyleOpr(bSqrt); buttonStyle(b0); buttonStyle(bDot);buttonStyleOpr(bMod2);buttonStyleOpr(bMod); buttonStyleOpr(bPlus);
 
 
           bEqual.setAlignment(Pos.CENTER);
@@ -61,7 +64,9 @@
           bEqual.setPrefHeight(18);
           bEqual.prefHeightProperty().bind(vbox.heightProperty().divide((220/18)/2));
           bEqual.prefWidthProperty().bind(vbox.widthProperty().divide((220/106)));
+          bEqual.setTextFill(Color.WHITE);
 
+          
           pane.add(bRp, 0, 0);
           pane.add(bLb, 1, 0);
           pane.add(bClearall, 2, 0);
@@ -85,31 +90,56 @@
           pane.add(b0, 0, 5);
           pane.add(bDot, 1, 5);
           pane.add(bEqual, 2, 5,2,1);  //colspan = 2
+          
+          
+
+          bEqual.setStyle("-fx-background-color:#0D8511");
+          bClear.setStyle("-fx-background-color:#B01A1A");
 
 
           vbox.getChildren().add(label);  // add label to the vbox
           vbox.getChildren().add(pane);   // add grid pane to the vbox
-
+          
+          
+          	vbox.setStyle("-fx-background:#1c1c1c");
 
          Scene scene = new Scene(vbox, 220, 220);
          primaryStage.setTitle("Taschenrechner");
          primaryStage.setScene(scene);
         // primaryStage.setResizable(false);
-        primaryStage.setFullScreen(true);
-        primaryStage.setFullScreenExitHint("");
+      //  primaryStage.setFullScreen(true);
+       // primaryStage.setFullScreenExitHint("");
 
          primaryStage.show();
  	}
 
      public void buttonStyle(Button b){
-     b.setStyle("-fx-padding:5px;");
+     b.setStyle("-fx-padding:5px; ");
      b.setFont(Font.font(12));
+     b.setTextFill(Color.WHITE);
+     
+     b.setStyle("-fx-background-color: #464646 ");
+
+     
      b.setPrefSize(50, 18);
      b.prefHeightProperty().bind(vbox.heightProperty().divide((220/18)/2));
      b.prefWidthProperty().bind(vbox.widthProperty().divide((220/50)));
 
      }
 
+     public void buttonStyleOpr(Button b){
+         b.setStyle("-fx-padding:5px; ");
+         b.setFont(Font.font(12));
+         b.setTextFill(Color.WHITE);
+         
+         b.setStyle("-fx-background-color: #2e2e2e ");
+
+         
+         b.setPrefSize(50, 18);
+         b.prefHeightProperty().bind(vbox.heightProperty().divide((220/18)/2));
+         b.prefWidthProperty().bind(vbox.widthProperty().divide((220/50)));
+
+         }
      public static void main(String[] args) {
          launch(args);
      }
